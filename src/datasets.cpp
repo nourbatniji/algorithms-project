@@ -2,6 +2,7 @@
 #include <random>
 #include <vector>
 #include <fstream>
+#include "datasets.h"
 
 using namespace std;
 
@@ -53,25 +54,22 @@ vector<int> generateDuplicates()
 	vector<int> data(N);
 	uniform_int_distribution<int> dist(1, 1000);
 	for (int i = 0; i < N; i++){
-		data[i] = dist(mersenne_twister);
+		data[i] = dist(mersenne_twister); //assigns a random val between 1-1k
 	}
 	return data;
 }
 
-void saveToFile(const vector<int> &data, const string &filename)
-{ // pass data and filename with reference. never modify
-	ofstream file(filename);
-	for (int x : data)
-	{ // loops through every number in data
-		file << x << "\n";
-	}
-}
-
-int main()
+void saveToFile(const vector<int>& data, const string& filename)
 {
-	saveToFile(generateRandoms(), "randoms.txt");
-	saveToFile(generateNearlySorted(), "nearly_sorted.txt");
-	saveToFile(generateReverseSorted(), "reverse_sorted.txt");
-	saveToFile(generateDuplicates(), "duplicates.txt");
-	return 0;
+    ofstream outFile(filename);
+
+    if (!outFile.is_open()) {
+        cout << "Error: could not open file " << filename << endl;
+        return;
+    }
+
+    for (int x : data)
+        outFile << x << "\n";
+
+    outFile.close();
 }
