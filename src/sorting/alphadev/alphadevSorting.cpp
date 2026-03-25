@@ -105,12 +105,12 @@ void sort8(vector<int> &a, int i)
 }
 
 // Merge: merges two sorted halves
-void merge(vector<int> &data, int low, int mid, int high)
+void alphaMerge(vector<int> &data, int low, int mid, int high)
 {
-    vector<int> temp(high - low + 1); // HOW
-    int i = low;                      // current in left sub-arr
-    int j = mid + 1;                  // current in right sub-arr
-    int k = 0;                        // current in temp arr
+    vector<int> temp(high - low + 1);
+    int i = low;     // current in left sub-arr
+    int j = mid + 1; // current in right sub-arr
+    int k = 0;       // current in temp arr
 
     while (i <= mid && j <= high)
     {
@@ -145,9 +145,9 @@ void alphaDevSort(vector<int> &data, int low, int high)
         return; // 1 element is already sorted, nothing to do
     if (size == 2)
     {
-        compareAndSwap(data, low, high);// 2 elements: just one swap check
+        compareAndSwap(data, low, high); // 2 elements: just one swap check
         return;
-    } 
+    }
     if (size == 3)
     {
         sort3(data, low);
@@ -179,14 +179,9 @@ void alphaDevSort(vector<int> &data, int low, int high)
         return;
     }
 
-
-
     // for arrays larger than 8: split, sort each half, then merge
-    int mid = low + (high - low) / 2;  // find middle point to split
-                                        // using this formula instead of (low+high)/2
-                                        // to avoid integer overflow
-
-    alphaDevSort(data, low, mid);        // recursively sort LEFT half
-    alphaDevSort(data, mid + 1, high);   // recursively sort RIGHT half
-    merge(data, low, mid, high);         // merge both sorted halves together
+    int mid = low + (high - low) / 2; // to avoid integer overflow
+    alphaDevSort(data, low, mid);
+    alphaDevSort(data, mid + 1, high);
+    alphaMerge(data, low, mid, high);
 }

@@ -12,7 +12,7 @@ void sort5(vector<int> &a, int i);
 void sort6(vector<int> &a, int i);                
 void sort7(vector<int> &a, int i);                
 void sort8(vector<int> &a, int i);                
-void merge(vector<int> &data, int low, int mid, int high); 
+void alphaMerge(vector<int> &data, int low, int mid, int high);
 void alphaDevSort(vector<int> &data, int low, int high);  
 
 #endif  
