@@ -53,7 +53,7 @@ void merge(vector<int> &data, int low, int mid, int high)
 }
 void timSort(vector<int> &data)
 {
-    int n = data.size();
+    int n = data.size(); //number of elements
 
     // ── PHASE 1: sort every run using insertion sort ──
     for (int i = 0; i < n; i += RUN)
@@ -63,7 +63,7 @@ void timSort(vector<int> &data)
     }
 
     // ── PHASE 2: merge sorted runs together ──
-    for (int size = RUN; size < n; size *= 2)
+    for (int size = RUN; size < n; size *= 2) 
     {
         for (int left = 0; left < n; left += 2 * size)
         {

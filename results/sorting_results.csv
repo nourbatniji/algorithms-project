@@ -1,0 +1,13 @@
+Algorithm,Dataset,ExecutionTime_µs
+AlphaDev, Randoms, 265094
+AlphaDev, NearlySorted, 176308
+AlphaDev, ReverseSorted, 172882
+AlphaDev, Duplicates, 174516
+TimSort, Randoms, 160693
+TimSort, NearlySorted, 143301
+TimSort, ReverseSorted, 143944
+TimSort, Duplicates, 143770
+PDQSort, Randoms, 15129
+PDQSort, NearlySorted, 10004
+PDQSort, ReverseSorted, 9973
+PDQSort, Duplicates, 143346
