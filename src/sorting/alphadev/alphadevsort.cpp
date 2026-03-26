@@ -1,10 +1,13 @@
-#include "alphadevSorting.h"
+#include "alphadevsort.h"
 #include <vector>
 using namespace std;
+
+extern long long comparisons;
 
 // Compare and swap two elements
 void compareAndSwap(vector<int> &a, int i, int j)
 {
+    comparisons++;
     if (a[i] > a[j])
         swap(a[i], a[j]);
 }
@@ -105,39 +108,25 @@ void sort8(vector<int> &a, int i)
 }
 
 // Merge: merges two sorted halves
-void alphaMerge(vector<int> &data, int low, int mid, int high)
+void alphaMerge(vector<int> &data, int low, int mid, int high, vector<int> &temp)
 {
-    vector<int> temp(high - low + 1);
-    int i = low;     // current in left sub-arr
-    int j = mid + 1; // current in right sub-arr
-    int k = 0;       // current in temp arr
+    for (int x = low; x <= high; x++)
+        temp[x] = data[x];
+
+    int i = low, j = mid + 1, k = low;
 
     while (i <= mid && j <= high)
     {
-        if (data[i] <= data[j])
-        {
-            temp[k++] = data[i++];
-        }
-        else
-        {
-            temp[k++] = data[j++];
-        }
+        comparisons++;
+        data[k++] = (temp[i] <= temp[j]) ? temp[i++] : temp[j++];
     }
     while (i <= mid)
-    {
-        temp[k++] = data[i++];
-    }
+        data[k++] = temp[i++];
     while (j <= high)
-    {
-        temp[k++] = data[j++];
-    }
-    for (int x = 0; x < k; x++)
-    {
-        data[low + x] = temp[x];
-    }
+        data[k++] = temp[j++];
 }
 
-void alphaDevSort(vector<int> &data, int low, int high)
+void alphaDevSort(vector<int> &data, int low, int high, vector<int> &temp)
 {
     int size = high - low + 1;
 
@@ -145,7 +134,7 @@ void alphaDevSort(vector<int> &data, int low, int high)
         return; // 1 element is already sorted, nothing to do
     if (size == 2)
     {
-        compareAndSwap(data, low, high); // 2 elements: just one swap check
+        compareAndSwap(data, low, high);
         return;
     }
     if (size == 3)
@@ -181,7 +170,17 @@ void alphaDevSort(vector<int> &data, int low, int high)
 
     // for arrays larger than 8: split, sort each half, then merge
     int mid = low + (high - low) / 2; // to avoid integer overflow
-    alphaDevSort(data, low, mid);
-    alphaDevSort(data, mid + 1, high);
-    alphaMerge(data, low, mid, high);
+    alphaDevSort(data, low, mid, temp);
+    alphaDevSort(data, mid + 1, high, temp);
+    comparisons++;
+    if (data[mid] <= data[mid + 1])
+        return;
+    alphaMerge(data, low, mid, high, temp);
+}
+
+// Public entry point — allocates temp once
+void alphaDevSort(vector<int> &data)
+{
+    vector<int> temp(data.size());
+    alphaDevSort(data, 0, data.size() - 1, temp);
 }

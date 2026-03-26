@@ -1,0 +1,13 @@
+Algorithm,Dataset,AvgTime_ns,WorstTime_ns,Memory_KB
+BinarySearch,Randoms,203,1541,0
+BinarySearch,NearlySorted,187,1208,0
+BinarySearch,ReverseSorted,191,1209,0
+BinarySearch,Duplicates,73,1166,0
+JumpSearch,Randoms,2341,4958,0
+JumpSearch,NearlySorted,2287,4750,0
+JumpSearch,ReverseSorted,2293,7250,0
+JumpSearch,Duplicates,2253,5208,0
+ExponentialSearch,Randoms,175,1000,0
+ExponentialSearch,NearlySorted,158,708,0
+ExponentialSearch,ReverseSorted,151,708,0
+ExponentialSearch,Duplicates,63,500,0

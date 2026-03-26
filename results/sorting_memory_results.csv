@@ -1,0 +1,17 @@
+Algorithm,Dataset,Memory_KB
+AlphaDev,Randoms,3906
+AlphaDev,NearlySorted,3906
+AlphaDev,ReverseSorted,3906
+AlphaDev,Duplicates,3906
+TimSort,Randoms,3906
+TimSort,NearlySorted,3906
+TimSort,ReverseSorted,3906
+TimSort,Duplicates,3906
+IntroSort,Randoms,1
+IntroSort,NearlySorted,1
+IntroSort,ReverseSorted,1
+IntroSort,Duplicates,1
+ParallelMergeSort,Randoms,3906
+ParallelMergeSort,NearlySorted,3906
+ParallelMergeSort,ReverseSorted,3906
+ParallelMergeSort,Duplicates,3906

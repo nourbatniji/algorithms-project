@@ -59,6 +59,24 @@ vector<int> generateDuplicates()
 	return data;
 }
 
+// ========================================================
+vector<int> generateRandomsBig(int size)
+{
+    cout << "  Generating " << size << " random numbers... ";
+    vector<int> data(size);
+    
+    mt19937 mersenne_twister(42);
+    uniform_int_distribution<int> dist(1, size);
+    
+    for (int i = 0; i < size; i++)
+    {
+        data[i] = dist(mersenne_twister);
+    }
+    cout << "Done!\n";
+    return data;
+}
+
+
 void saveToFile(const vector<int>& data, const string& filename)
 {
     ofstream outFile(filename);

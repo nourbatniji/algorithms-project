@@ -2,6 +2,7 @@
 #include "timsort.h"
 using namespace std;
 
+extern long long comparisons;
 const int RUN = 32;
 
 void insertionSort(vector<int> &data, int low, int high)
@@ -11,10 +12,15 @@ void insertionSort(vector<int> &data, int low, int high)
         int key = data[i];
         int j = i - 1;
 
-        while (j >= low && data[j] > key) // shift elements right until correct position found
+        while (j >= low) // shift elements right until correct position found
         {
-            data[j + 1] = data[j]; // shift right
-            j--;
+            comparisons++;
+            if (data[j] > key){
+                data[j + 1] = data[j]; // shift right
+                j--;
+            }else{
+                break;
+            }
         }
         data[j + 1] = key; // put the smaller key to the left
     }
@@ -29,6 +35,7 @@ void merge(vector<int> &data, int low, int mid, int high)
 
     while (i <= mid && j <= high)
     {
+        comparisons++;
         if (data[i] <= data[j])
         {
             temp[k++] = data[i++];
@@ -53,17 +60,17 @@ void merge(vector<int> &data, int low, int mid, int high)
 }
 void timSort(vector<int> &data)
 {
-    int n = data.size(); //number of elements
+    int n = data.size(); // number of elements
 
-    // ── PHASE 1: sort every run using insertion sort ──
+    // PHASE 1: sort every run using insertion sort
     for (int i = 0; i < n; i += RUN)
     {
         int right = min(i + RUN - 1, n - 1);
         insertionSort(data, i, right);
     }
 
-    // ── PHASE 2: merge sorted runs together ──
-    for (int size = RUN; size < n; size *= 2) 
+    // PHASE 2: merge sorted runs together
+    for (int size = RUN; size < n; size *= 2)
     {
         for (int left = 0; left < n; left += 2 * size)
         {
@@ -72,7 +79,7 @@ void timSort(vector<int> &data)
 
             if (mid < right)
             {
-                    merge(data, left, mid, right);
+                merge(data, left, mid, right);
             }
         }
     }

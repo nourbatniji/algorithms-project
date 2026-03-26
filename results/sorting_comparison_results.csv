@@ -1,0 +1,17 @@
+Algorithm,Dataset,Comparisons
+AlphaDev,Randoms,19627120
+AlphaDev,NearlySorted,2892303
+AlphaDev,ReverseSorted,11392044
+AlphaDev,Duplicates,19623166
+TimSort,Randoms,23547515
+TimSort,NearlySorted,8573052
+TimSort,ReverseSorted,22778391
+TimSort,Duplicates,23531407
+IntroSort,Randoms,22919597
+IntroSort,NearlySorted,16950786
+IntroSort,ReverseSorted,38747494
+IntroSort,Duplicates,41587518
+ParallelMergeSort,Randoms,18674724
+ParallelMergeSort,NearlySorted,10071200
+ParallelMergeSort,ReverseSorted,10106152
+ParallelMergeSort,Duplicates,18670660

@@ -1,0 +1,17 @@
+Algorithm,Dataset,ExecutionTime_µs
+AlphaDev,Randoms,34877
+AlphaDev,NearlySorted,735
+AlphaDev,ReverseSorted,13891
+AlphaDev,Duplicates,33602
+TimSort,Randoms,35870
+TimSort,NearlySorted,15186
+TimSort,ReverseSorted,17486
+TimSort,Duplicates,35125
+IntroSort,Randoms,44808
+IntroSort,NearlySorted,5354
+IntroSort,ReverseSorted,19202
+IntroSort,Duplicates,31760
+ParallelMergeSort,Randoms,41645
+ParallelMergeSort,NearlySorted,17632
+ParallelMergeSort,ReverseSorted,20353
+ParallelMergeSort,Duplicates,41013
